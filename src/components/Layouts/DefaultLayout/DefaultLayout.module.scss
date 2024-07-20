@@ -1,0 +1,14 @@
+.body-container {
+    display: flex;
+    justify-content: center;
+    margin-top: var(--default-layout-header-height);
+}
+
+.body-wrapper {
+    display: flex;
+    width: var(--default-layout-width);
+}
+
+.content-container {
+    flex: 1;
+}
