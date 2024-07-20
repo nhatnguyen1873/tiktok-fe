@@ -1,0 +1,12 @@
+.container {
+    height: 100%;
+    width: var(--default-layout-sidebar-width);
+}
+
+.wrapper {
+    position: fixed;
+    top: var(--default-layout-header-height);
+    bottom: 0;
+    width: var(--default-layout-sidebar-width);
+    background-color: var(--white-color);
+}

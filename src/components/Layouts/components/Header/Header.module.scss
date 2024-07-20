@@ -1,0 +1,17 @@
+.container {
+    z-index: 3000;
+    position: fixed;
+    top: 0;
+    display: flex;
+    justify-content: space-around;
+    height: var(--default-layout-header-height);
+    width: 100%;
+    background-color: var(--white-color);
+    box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 1px;
+}
+
+.wrapper {
+    height: 100%;
+    max-width: 100%;
+    width: var(--default-layout-width);
+}
