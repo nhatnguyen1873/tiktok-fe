@@ -1,0 +1,42 @@
+.container {
+    --verify-badge-size: 1.4rem;
+    --avatar-image-size: 40px;
+
+    display: flex;
+    align-items: center;
+    padding: 9px 16px;
+
+    &:hover {
+        cursor: pointer;
+        background-color: var(--light-button-hover-color);
+    }
+}
+
+.avatar-image {
+    width: var(--avatar-image-size);
+    height: var(--avatar-image-size);
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.user-info-container {
+    flex: 1;
+    margin-left: 12px;
+}
+
+.username-container {
+    line-height: 21px;
+    font-weight: 600;
+}
+
+.verify-badge-icon {
+    margin-left: 8px;
+    width: var(--verify-badge-size);
+    height: var(--verify-badge-size);
+}
+
+.nickname {
+    font-size: 1.4rem;
+    line-height: 18px;
+    color: rgba(22, 24, 35, 0.5);
+}
