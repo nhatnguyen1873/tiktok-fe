@@ -233,7 +233,7 @@
 .upload-button--logged-in {
     + {
         .action-btn {
-            margin-left: 26px;
+            margin-left: 28px;
         }
     }
 }
@@ -252,7 +252,7 @@
 .action-btn {
     + {
         .action-btn {
-            margin-left: 18px;
+            margin-left: 22px;
         }
     }
 }
@@ -264,8 +264,21 @@
     height: var(--action-icon-size);
 }
 
+.notification-badge {
+    position: absolute;
+    bottom: 60%;
+    left: 46%;
+    padding: 2px 6px;
+    background-color: var(--primary-color);
+    color: var(--white-color);
+    line-height: normal;
+    font-size: 1.4rem;
+    font-weight: 600;
+    border-radius: 10px;
+}
+
 .user-avatar {
-    margin-left: 24px;
+    margin-left: 28px;
     width: 32px;
     height: 32px;
     object-fit: cover;
