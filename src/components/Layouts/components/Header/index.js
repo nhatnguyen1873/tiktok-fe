@@ -1,6 +1,5 @@
-import { memo, useState, useEffect, useCallback, useMemo } from "react";
+import { memo, useCallback, useMemo } from "react";
 import classNames from "classnames/bind";
-import HeadlessTippy from "@tippyjs/react/headless";
 import Tippy from "@tippyjs/react";
 import "tippy.js/dist/tippy.css";
 
@@ -17,14 +16,10 @@ import {
     CoinIcon,
     GearIcon,
     LogoutIcon,
-    SearchIcon,
-    CloseCircleIcon,
-    SpinnerIcon,
     PlusIcon,
     EllipsisVerticalIcon,
 } from "@/components/Icons";
-import PopperContainer from "@/components/Popper";
-import AccountItem from "@/components/AccountItem";
+import Search from "../Search";
 import Button from "@/components/Button";
 import { MenuPopper } from "@/components/Popper";
 import styles from "./Header.module.scss";
@@ -82,12 +77,7 @@ const MENU_ITEMS = [
 ];
 
 function Header() {
-    const [searchResult, setSearchResult] = useState([]);
     const currentUser = useMemo(() => true, []);
-
-    useEffect(() => {
-        setSearchResult([1]);
-    }, []);
 
     const handleChangeMenu = useCallback((item) => {
         console.log(item);
@@ -126,42 +116,7 @@ function Header() {
                     </a>
                 </div>
 
-                <div>
-                    <HeadlessTippy
-                        visible={searchResult.length > 0}
-                        interactive
-                        render={(attrs) => (
-                            <div tabIndex="-1" className={cx("search-result")} {...attrs}>
-                                <PopperContainer>
-                                    <h4 className={cx("search-title")}>Accounts</h4>
-                                    <AccountItem />
-                                    <AccountItem />
-                                    <AccountItem />
-                                    <AccountItem />
-                                    <AccountItem />
-                                    <AccountItem />
-                                    <AccountItem />
-                                </PopperContainer>
-                            </div>
-                        )}
-                    >
-                        <div className={cx("search-form")}>
-                            <input placeholder="Search" className={cx("search-input")} />
-                            <div className={cx("reset-search")}>
-                                <span className={cx("reset-search-btn", "reset-icon")}>
-                                    <CloseCircleIcon className={cx("reset-search-icon")} />
-                                </span>
-                                <span className={cx("reset-search-btn", "loading-icon")}>
-                                    <SpinnerIcon className={cx("reset-search-icon")} />
-                                </span>
-                            </div>
-                            <button className={cx("search-button")}>
-                                <SearchIcon className={cx("search-button-icon")} />
-                            </button>
-                            <div className={cx("border-container")}></div>
-                        </div>
-                    </HeadlessTippy>
-                </div>
+                <Search />
 
                 <div className={cx("actions-container")}>
                     {currentUser ? (
