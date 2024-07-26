@@ -1,6 +1,7 @@
 import { memo, useState, useEffect, useRef, useCallback, useLayoutEffect, useMemo } from "react";
 import classNames from "classnames/bind";
 import HeadlessTippy from "@tippyjs/react/headless";
+import * as searchServices from "@/apiServices/searchServices";
 
 import { SearchIcon, CloseCircleIcon, SpinnerIcon } from "@/components/Icons";
 import PopperContainer from "@/components/Popper";
@@ -20,23 +21,16 @@ function Search({ ...props }) {
 
     useEffect(() => {
         if (searchValueDebounced.trim()) {
-            setLoading(true);
+            const fetchApi = async () => {
+                setLoading(true);
 
-            fetch(
-                `https://tiktok.fullstack.edu.vn/api/users/search?q=${encodeURIComponent(
-                    searchValueDebounced,
-                )}&type=less`,
-            )
-                .then((res) => {
-                    return res.json();
-                })
-                .then((res) => {
-                    setSearchResult(res.data);
-                    setLoading(false);
-                })
-                .catch(() => {
-                    setLoading(false);
-                });
+                const result = await searchServices.search(searchValueDebounced);
+
+                setSearchResult(result);
+                setLoading(false);
+            };
+
+            fetchApi();
         }
     }, [searchValueDebounced]);
 
