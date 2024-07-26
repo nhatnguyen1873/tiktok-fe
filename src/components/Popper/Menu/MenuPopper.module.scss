@@ -57,3 +57,17 @@
         cursor: pointer;
     }
 }
+
+// Item list
+.menu-body {
+    max-height: 590px;
+    overflow-y: auto;
+}
+
+.menu-header {
+    ~ {
+        .menu-body {
+            margin-bottom: -8px;
+        }
+    }
+}

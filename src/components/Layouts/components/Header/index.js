@@ -1,9 +1,12 @@
 import { memo, useCallback, useMemo } from "react";
 import classNames from "classnames/bind";
+import { Link } from "react-router-dom";
 import Tippy from "@tippyjs/react";
 import "tippy.js/dist/tippy.css";
 
+import routesConfig from "@/config/routes";
 import images from "@/assets/images";
+import Search from "../Search";
 import Image from "@/components/Image";
 import {
     MessageIcon,
@@ -19,7 +22,6 @@ import {
     PlusIcon,
     EllipsisVerticalIcon,
 } from "@/components/Icons";
-import Search from "../Search";
 import Button from "@/components/Button";
 import { MenuPopper } from "@/components/Popper";
 import styles from "./Header.module.scss";
@@ -53,7 +55,7 @@ const MENU_ITEMS = [
     {
         title: "Feedback and help",
         icon: <QuestionIcon />,
-        to: "/feedback",
+        to: routesConfig.feedback,
     },
     {
         title: "Dark mode",
@@ -93,11 +95,13 @@ function Header() {
         {
             title: "Get Coins",
             icon: <CoinIcon />,
+            to: routesConfig.coin,
         },
         MENU_ITEMS[0],
         {
             title: "Settings",
             icon: <GearIcon />,
+            to: routesConfig.setting,
         },
         ...MENU_ITEMS.slice(1),
         {
@@ -111,9 +115,9 @@ function Header() {
         <header className={cx("container")}>
             <div className={cx("wrapper")}>
                 <div className={cx("logo-container")}>
-                    <a className={cx("logo-wrapper")} href="/">
+                    <Link className={cx("logo-wrapper")} to={routesConfig.home}>
                         <img src={images.logo.default} alt="Tiktok" />
-                    </a>
+                    </Link>
                 </div>
 
                 <Search />
@@ -124,17 +128,29 @@ function Header() {
                             <Button
                                 className={cx("upload-button--logged-in")}
                                 outlined
-                                to="/upload"
+                                to={routesConfig.upload}
                                 leftIcon={<PlusIcon />}
                             >
                                 Upload
                             </Button>
-                            <Tippy delay={[0, 200]} content="Messages" placement="bottom">
+                            <Tippy
+                                appendTo="parent"
+                                hideOnClick={false}
+                                delay={[0, 150]}
+                                content="Messages"
+                                placement="bottom"
+                            >
                                 <span className={cx("action-btn")}>
                                     <MessageIcon className={cx("action-icon")} />
                                 </span>
                             </Tippy>
-                            <Tippy delay={[0, 200]} content="Inbox" placement="bottom">
+                            <Tippy
+                                appendTo="parent"
+                                hideOnClick={false}
+                                delay={[0, 150]}
+                                content="Inbox"
+                                placement="bottom"
+                            >
                                 <span className={cx("action-btn")}>
                                     <InboxIcon className={cx("action-icon")} />
                                     <span className={cx("notification-badge")}>23</span>
@@ -143,7 +159,7 @@ function Header() {
                         </>
                     ) : (
                         <>
-                            <Button text to="/upload" className={cx("upload-button")}>
+                            <Button text to={routesConfig.upload} className={cx("upload-button")}>
                                 Upload
                             </Button>
                             <Button primary className={cx("login-button")}>
