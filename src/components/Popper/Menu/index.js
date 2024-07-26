@@ -11,7 +11,16 @@ const cx = classNames.bind(styles);
 
 const defaultFunc = () => {};
 
-function MenuPopper({ offset = [0, 10], items = [], className, onChange = defaultFunc, children, ...props }) {
+function MenuPopper({
+    offset = [0, 10],
+    hideOnClick = false,
+    delay = [0, 600],
+    items = [],
+    onChange = defaultFunc,
+    className,
+    children,
+    ...props
+}) {
     const [history, setHistory] = useState([{ data: items }]);
     const currentData = useMemo(() => history[history.length - 1], [history]);
     const itemList = useMemo(
@@ -41,7 +50,7 @@ function MenuPopper({ offset = [0, 10], items = [], className, onChange = defaul
     return (
         <Tippy
             interactive
-            delay={[0, 800]}
+            delay={delay}
             placement="bottom-end"
             offset={offset}
             render={(attrs) => (
@@ -50,11 +59,12 @@ function MenuPopper({ offset = [0, 10], items = [], className, onChange = defaul
 
                     <PopperContainer>
                         {currentData.title && <Header title={currentData.title} onBack={handleBack} />}
-                        {itemList}
+                        <div className={cx("menu-body")}>{itemList}</div>
                     </PopperContainer>
                 </div>
             )}
             onHide={handleResetHistory}
+            hideOnClick={hideOnClick}
             {...props}
         >
             {children}

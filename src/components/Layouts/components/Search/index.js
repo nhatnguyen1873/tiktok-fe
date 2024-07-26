@@ -16,15 +16,15 @@ function Search({ ...props }) {
     const [searchValue, setSearchValue] = useState("");
     const [showResult, setShowResult] = useState(false);
     const [loading, setLoading] = useState(false);
-    const searchValueDebounced = useDebounce(searchValue, 500);
+    const debouncedSearchVal = useDebounce(searchValue, 500);
     const inputRef = useRef();
 
     useEffect(() => {
-        if (searchValueDebounced.trim()) {
+        if (debouncedSearchVal.trim()) {
             const fetchApi = async () => {
                 setLoading(true);
 
-                const result = await searchServices.search(searchValueDebounced);
+                const result = await searchServices.search(debouncedSearchVal);
 
                 setSearchResult(result);
                 setLoading(false);
@@ -32,7 +32,7 @@ function Search({ ...props }) {
 
             fetchApi();
         }
-    }, [searchValueDebounced]);
+    }, [debouncedSearchVal]);
 
     useLayoutEffect(() => {
         if (!searchValue.trim()) {
@@ -42,14 +42,16 @@ function Search({ ...props }) {
         }
     }, [searchValue]);
 
-    const handleSetSearchValue = useCallback((event) => {
-        if (event.target.value[0] === " ") {
-            const valueLength = event.target.value.length;
-            event.target.setSelectionRange(valueLength, valueLength);
+    const handleChangeSearchValue = useCallback((event) => {
+        const input = event.target;
+
+        if (input.value[0] === " ") {
+            const valueLength = input.value.length;
+            input.setSelectionRange(valueLength, valueLength);
             return;
         }
 
-        setSearchValue(event.target.value);
+        setSearchValue(input.value);
     }, []);
 
     const handleResetSearch = useCallback(() => {
@@ -80,12 +82,13 @@ function Search({ ...props }) {
                     </div>
                 )}
                 onClickOutside={handleHideResult}
+                {...props}
             >
                 <div className={cx("search-form")}>
                     <input
                         ref={inputRef}
                         value={searchValue}
-                        onChange={(e) => handleSetSearchValue(e)}
+                        onChange={(e) => handleChangeSearchValue(e)}
                         onFocus={() => setShowResult(true)}
                         placeholder="Search"
                         className={cx("search-input")}
