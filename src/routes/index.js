@@ -1,11 +1,11 @@
-import { HeaderOnly } from "@/components/Layouts";
+import { HeaderOnly } from "@/layouts";
 
 import Following from "@/pages/Following";
 import Home from "@/pages/Home";
 import Profile from "@/pages/Profile";
 import Upload from "@/pages/Upload";
 
-import routesConfig from "@/config/routes";
+import { routesConfig } from "@/config";
 
 const publicRoutes = [
     { path: routesConfig.home, component: Home },

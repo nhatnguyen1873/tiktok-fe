@@ -1,12 +1,12 @@
 import { memo, useState, useEffect, useRef, useCallback, useLayoutEffect, useMemo } from "react";
 import classNames from "classnames/bind";
 import HeadlessTippy from "@tippyjs/react/headless";
-import * as searchServices from "@/apiServices/searchServices";
 
 import { SearchIcon, CloseCircleIcon, SpinnerIcon } from "@/components/Icons";
 import PopperContainer from "@/components/Popper";
 import AccountItem from "@/components/AccountItem";
 import { useDebounce } from "@/hooks";
+import * as searchService from "@/services/searchService";
 import styles from "./Search.module.scss";
 
 const cx = classNames.bind(styles);
@@ -24,7 +24,7 @@ function Search({ ...props }) {
             const fetchApi = async () => {
                 setLoading(true);
 
-                const result = await searchServices.search(debouncedSearchVal);
+                const result = await searchService.search(debouncedSearchVal);
 
                 setSearchResult(result);
                 setLoading(false);
