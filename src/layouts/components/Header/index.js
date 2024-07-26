@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import Tippy from "@tippyjs/react";
 import "tippy.js/dist/tippy.css";
 
-import routesConfig from "@/config/routes";
+import { routesConfig } from "@/config";
 import images from "@/assets/images";
 import Search from "../Search";
 import Image from "@/components/Image";
@@ -168,6 +168,7 @@ function Header() {
                         </>
                     )}
                     <MenuPopper
+                        appendTo="parent"
                         offset={currentUser ? [16, 12] : [18, 8]}
                         items={currentUser ? userMenu : MENU_ITEMS}
                         onChange={handleChangeMenu}
