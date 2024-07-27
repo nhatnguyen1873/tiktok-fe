@@ -1,3 +1,6 @@
+import { memo } from "react";
+import PropTypes from "prop-types";
+
 import Header from "../components/Header";
 
 function HeaderOnly({ children }) {
@@ -11,4 +14,8 @@ function HeaderOnly({ children }) {
     );
 }
 
-export default HeaderOnly;
+HeaderOnly.propTypes = {
+    children: PropTypes.node,
+};
+
+export default memo(HeaderOnly);

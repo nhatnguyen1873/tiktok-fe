@@ -1,6 +1,7 @@
 import { memo } from "react";
 import classNames from "classnames/bind";
 import { Link } from "react-router-dom";
+import PropTypes from "prop-types";
 
 import images from "@/assets/images";
 import Image from "@/components/Image";
@@ -25,5 +26,14 @@ function AccountItem({ account }) {
         </Link>
     );
 }
+
+AccountItem.propTypes = {
+    account: PropTypes.shape({
+        nickname: PropTypes.string,
+        full_name: PropTypes.string,
+        avatar: PropTypes.string,
+        tick: PropTypes.bool,
+    }),
+};
 
 export default memo(AccountItem);

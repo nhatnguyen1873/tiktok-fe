@@ -1,4 +1,5 @@
 import { memo } from "react";
+import PropTypes from "prop-types";
 
 function EllipsisVerticalIcon({ width = "100%", height = "100%", ...props }) {
     return (
@@ -19,5 +20,10 @@ function EllipsisVerticalIcon({ width = "100%", height = "100%", ...props }) {
         </svg>
     );
 }
+
+EllipsisVerticalIcon.propTypes = {
+    width: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+    height: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+};
 
 export default memo(EllipsisVerticalIcon);

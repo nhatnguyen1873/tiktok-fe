@@ -2,6 +2,7 @@ import { memo, useState, useMemo, useCallback } from "react";
 import classNames from "classnames/bind";
 import Tippy from "@tippyjs/react/headless";
 import PopperContainer from "@/components/Popper";
+import PropTypes from "prop-types";
 
 import MenuItem from "./MenuItem";
 import Header from "./Header";
@@ -71,5 +72,15 @@ function MenuPopper({
         </Tippy>
     );
 }
+
+MenuPopper.propTypes = {
+    offset: PropTypes.array,
+    hideOnClick: PropTypes.bool,
+    delay: PropTypes.array,
+    items: PropTypes.array.isRequired,
+    onChange: PropTypes.func,
+    className: PropTypes.string,
+    children: PropTypes.node.isRequired,
+};
 
 export default memo(MenuPopper);
