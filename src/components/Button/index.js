@@ -1,6 +1,7 @@
 import { memo } from "react";
 import classNames from "classnames/bind";
 import { Link } from "react-router-dom";
+import PropTypes from "prop-types";
 
 import styles from "./Button.module.scss";
 
@@ -63,5 +64,22 @@ function Button({
         </Component>
     );
 }
+
+Button.propTypes = {
+    primary: PropTypes.bool,
+    outlined: PropTypes.bool,
+    rounded: PropTypes.bool,
+    text: PropTypes.bool,
+    disabled: PropTypes.bool,
+    small: PropTypes.bool,
+    large: PropTypes.bool,
+    onClick: PropTypes.func,
+    to: PropTypes.string,
+    href: PropTypes.string,
+    children: PropTypes.node.isRequired,
+    className: PropTypes.string,
+    leftIcon: PropTypes.element,
+    rightIcon: PropTypes.element,
+};
 
 export default memo(Button);

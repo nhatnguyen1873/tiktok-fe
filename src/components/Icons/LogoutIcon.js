@@ -1,4 +1,5 @@
 import { memo } from "react";
+import PropTypes from "prop-types";
 
 function LogoutIcon({ width = "100%", height = "100%", ...props }) {
     return (
@@ -19,5 +20,10 @@ function LogoutIcon({ width = "100%", height = "100%", ...props }) {
         </svg>
     );
 }
+
+LogoutIcon.propTypes = {
+    width: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+    height: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+};
 
 export default memo(LogoutIcon);
