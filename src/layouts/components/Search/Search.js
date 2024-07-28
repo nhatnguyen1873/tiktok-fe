@@ -1,10 +1,10 @@
-import { memo, useState, useEffect, useRef, useCallback, useLayoutEffect, useMemo } from "react";
+import { memo, useState, useEffect, useRef, useCallback, useLayoutEffect } from "react";
 import classNames from "classnames/bind";
 import HeadlessTippy from "@tippyjs/react/headless";
 
 import { SearchIcon, CloseCircleIcon, SpinnerIcon } from "@/components/Icons";
 import PopperContainer from "@/components/Popper";
-import AccountItem from "@/components/AccountItem";
+import AccountList from "./AccountList";
 import { useDebounce } from "@/hooks";
 import * as searchService from "@/services/searchService";
 import styles from "./Search.module.scss";
@@ -63,9 +63,13 @@ function Search({ ...props }) {
         setShowResult(false);
     }, []);
 
-    const resultAccounts = useMemo(
-        () => searchResult.map((account) => <AccountItem key={account.id} account={account} />),
-        [searchResult],
+    const handleRenderResult = (attrs) => (
+        <div tabIndex="-1" className={cx("search-result")} {...attrs}>
+            <PopperContainer>
+                <h4 className={cx("search-title")}>Accounts</h4>
+                {searchResult.length > 0 && <AccountList accounts={searchResult} />}
+            </PopperContainer>
+        </div>
     );
 
     return (
@@ -73,14 +77,7 @@ function Search({ ...props }) {
             <HeadlessTippy
                 visible={showResult && searchResult.length > 0}
                 interactive
-                render={(attrs) => (
-                    <div tabIndex="-1" className={cx("search-result")} {...attrs}>
-                        <PopperContainer>
-                            <h4 className={cx("search-title")}>Accounts</h4>
-                            {searchResult.length > 0 && resultAccounts}
-                        </PopperContainer>
-                    </div>
-                )}
+                render={handleRenderResult}
                 onClickOutside={handleHideResult}
                 {...props}
             >
