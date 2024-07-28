@@ -24,6 +24,7 @@ function MenuPopper({
 }) {
     const [history, setHistory] = useState([{ data: items }]);
     const currentData = useMemo(() => history[history.length - 1], [history]);
+
     const itemList = useMemo(
         () =>
             currentData.data.map((item, index) => {
@@ -41,12 +42,27 @@ function MenuPopper({
             }),
         [currentData, onChange],
     );
+
     const handleBack = useCallback(() => {
         setHistory((prev) => prev.slice(0, -1));
     }, []);
+
     const handleResetHistory = useCallback(() => {
         setHistory((prev) => prev.slice(0, 1));
     }, []);
+
+    const handleRenderResult = (attrs) => {
+        return (
+            <div tabIndex="-1" className={cx(className, "menu-container")} {...attrs}>
+                <span className={cx("arrow-up")}></span>
+
+                <PopperContainer>
+                    {currentData.title && <Header title={currentData.title} onBack={handleBack} />}
+                    <div className={cx("menu-body")}>{itemList}</div>
+                </PopperContainer>
+            </div>
+        );
+    };
 
     return (
         <Tippy
@@ -54,16 +70,7 @@ function MenuPopper({
             delay={delay}
             placement="bottom-end"
             offset={offset}
-            render={(attrs) => (
-                <div tabIndex="-1" className={cx(className, "menu-container")} {...attrs}>
-                    <span className={cx("arrow-up")}></span>
-
-                    <PopperContainer>
-                        {currentData.title && <Header title={currentData.title} onBack={handleBack} />}
-                        <div className={cx("menu-body")}>{itemList}</div>
-                    </PopperContainer>
-                </div>
-            )}
+            render={handleRenderResult}
             onHide={handleResetHistory}
             hideOnClick={hideOnClick}
             {...props}
