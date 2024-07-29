@@ -1,0 +1,91 @@
+.section-container {
+    position: relative;
+    padding: 16px 0;
+    margin-top: 8px;
+}
+
+.section-container {
+    &::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 8px;
+        right: 8px;
+        height: 0.5px;
+        background-color: rgba(22, 24, 35, 0.12);
+    }
+}
+
+.section-title {
+    color: rgba(22, 24, 35, 0.75);
+    font-size: 1.4rem;
+    padding: 0 8px;
+    font-weight: 600;
+    line-height: 18px;
+}
+
+.account-list-container {
+    margin-top: 8px;
+}
+
+// Account item
+.account-item-container {
+    --avatar-size: 32px;
+    --verify-badge-size: 14px;
+
+    display: flex;
+    align-items: center;
+    padding: 8px;
+    border-radius: 4px;
+    transition: background-color 0.2s ease;
+
+    &:hover {
+        background-color: var(--light-button-hover-color);
+    }
+}
+
+.account-avatar {
+    object-fit: cover;
+    flex-shrink: 0;
+    width: var(--avatar-size);
+    height: var(--avatar-size);
+    border-radius: 50%;
+}
+
+.user-info-container {
+    flex: 1;
+    margin-left: 12px;
+    height: 32px;
+}
+
+.nickname-container {
+    font-size: 1.6rem;
+    font-weight: 700;
+    line-height: 19px;
+}
+
+.verify-badge-icon {
+    object-fit: cover;
+    margin-left: 4px;
+    width: var(--verify-badge-size);
+    height: var(--verify-badge-size);
+}
+
+.full-name {
+    font-size: 1.2rem;
+    line-height: 15px;
+}
+
+// show more button
+.show-more-text {
+    padding-left: 8px;
+    margin-top: 8px;
+    color: var(--primary-color);
+    font-size: 1.4rem;
+    font-weight: 600;
+    line-height: 18px;
+
+    &:hover {
+        cursor: pointer;
+    }
+}

@@ -31,11 +31,11 @@ const cx = classNames.bind(styles);
 const MENU_ITEMS = [
     {
         title: "Creator tools",
-        icon: <CreatorIcon />,
+        icon: <CreatorIcon width={20} height={20} />,
     },
     {
         title: "English",
-        icon: <LanguageIcon />,
+        icon: <LanguageIcon width={20} height={20} />,
         children: {
             title: "Language",
             data: [
@@ -54,12 +54,12 @@ const MENU_ITEMS = [
     },
     {
         title: "Feedback and help",
-        icon: <QuestionIcon />,
+        icon: <QuestionIcon width={20} height={20} />,
         to: routesConfig.feedback,
     },
     {
         title: "Dark mode",
-        icon: <MoonIcon />,
+        icon: <MoonIcon width={20} height={20} />,
         children: {
             title: "Theme",
             data: [
@@ -90,23 +90,23 @@ function Header() {
     const userMenu = [
         {
             title: "View profile",
-            icon: <UserIcon />,
+            icon: <UserIcon width={20} height={20} />,
         },
         {
             title: "Get Coins",
-            icon: <CoinIcon />,
+            icon: <CoinIcon width={20} height={20} />,
             to: routesConfig.coin,
         },
         MENU_ITEMS[0],
         {
             title: "Settings",
-            icon: <GearIcon />,
+            icon: <GearIcon width={20} height={20} />,
             to: routesConfig.setting,
         },
         ...MENU_ITEMS.slice(1),
         {
             title: "Log out",
-            icon: <LogoutIcon />,
+            icon: <LogoutIcon width={20} height={20} />,
             separator: true,
         },
     ];
@@ -129,7 +129,7 @@ function Header() {
                                 className={cx("upload-button--logged-in")}
                                 outlined
                                 to={routesConfig.upload}
-                                leftIcon={<PlusIcon />}
+                                leftIcon={<PlusIcon width={20} height={20} />}
                             >
                                 Upload
                             </Button>
