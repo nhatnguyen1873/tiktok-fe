@@ -1,8 +1,13 @@
+export { CameraIcon, CameraSolidIcon } from "./CameraIcon";
 export { default as CloseCircleIcon } from "./CloseCircleIcon";
 export { default as CoinIcon } from "./CoinIcon";
 export { default as CreatorIcon } from "./CreatorIcon";
 export { default as EllipsisVerticalIcon } from "./EllipsisVerticalIcon";
+export { ExploreIcon, ExploreSolidIcon } from "./ExploreIcon";
+export { FollowingIcon, FollowingSolidIcon } from "./FollowingIcon";
 export { default as GearIcon } from "./GearIcon";
+export { GroupIcon, GroupSolidIcon } from "./GroupIcon";
+export { HomeIcon, HomeSolidIcon } from "./HomeIcon";
 export { default as InboxIcon } from "./InboxIcon";
 export { default as LanguageIcon } from "./LanguageIcon";
 export { default as LogoutIcon } from "./LogoutIcon";

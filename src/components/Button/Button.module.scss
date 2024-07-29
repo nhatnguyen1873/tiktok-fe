@@ -1,5 +1,5 @@
 .container {
-    --icon-size: 20px;
+    --icon-size: 14px;
 
     display: inline-flex;
     align-items: center;
@@ -90,9 +90,8 @@
 .left-icon,
 .right-icon {
     line-height: 0;
-    font-size: var(--icon-size);
-    width: var(--icon-size);
-    height: var(--icon-size);
+    min-width: var(--icon-size);
+    min-height: var(--icon-size);
 }
 
 .left-icon {
