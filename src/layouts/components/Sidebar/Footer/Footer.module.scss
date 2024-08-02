@@ -1,0 +1,29 @@
+.container {
+    position: relative;
+    padding: 16px 0 0 8px;
+}
+
+.container {
+    &::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 8px;
+        right: 8px;
+        height: 0.5px;
+        background-color: rgba(22, 24, 35, 0.12);
+    }
+}
+
+.effect-house-link {
+    position: relative;
+}
+
+.effect-house-img {
+    width: 208px;
+    height: 52px;
+}
+
+.effect-house-label {
+    position: absolute;
+}

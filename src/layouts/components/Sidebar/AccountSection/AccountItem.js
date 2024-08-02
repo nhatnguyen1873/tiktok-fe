@@ -1,4 +1,4 @@
-import { memo } from "react";
+import { memo, forwardRef } from "react";
 import { Link } from "react-router-dom";
 import classNames from "classnames/bind";
 import PropTypes from "prop-types";
@@ -9,10 +9,14 @@ import styles from "./AccountSection.module.scss";
 
 const cx = classNames.bind(styles);
 
-function AccountItem({ account }) {
+const AccountItem = forwardRef(({ account }, ref) => {
     return (
-        <Link to={`/@${account.nickname}`} className={cx("account-item-container")}>
-            <Image src={account.avatar} alt={account.nickname} className={cx("account-avatar")} />
+        <Link ref={ref} to={`/@${account.nickname}`} className={cx("account-item-container")}>
+            <Image
+                src={account.avatar}
+                alt={account.nickname}
+                className={cx("account-avatar", { livestream: account.isLive })}
+            />
             <div className={cx("user-info-container")}>
                 <h4 className={cx("nickname-container")}>
                     {account.nickname}
@@ -24,7 +28,7 @@ function AccountItem({ account }) {
             </div>
         </Link>
     );
-}
+});
 
 AccountItem.propTypes = {
     account: PropTypes.shape({
@@ -32,6 +36,7 @@ AccountItem.propTypes = {
         nickname: PropTypes.string,
         avatar: PropTypes.string,
         tick: PropTypes.bool,
+        isLive: PropTypes.bool,
     }),
 };
 

@@ -16,6 +16,14 @@
     }
 }
 
+.section-container {
+    + {
+        .section-container {
+            margin-top: 0;
+        }
+    }
+}
+
 .section-title {
     color: rgba(22, 24, 35, 0.75);
     font-size: 1.4rem;
@@ -52,6 +60,11 @@
     border-radius: 50%;
 }
 
+.livestream {
+    border: 1px solid var(--primary-color);
+    padding: 2px;
+}
+
 .user-info-container {
     flex: 1;
     margin-left: 12px;
@@ -59,9 +72,12 @@
 }
 
 .nickname-container {
+    display: flex;
+    align-items: center;
+    margin-top: -2px;
     font-size: 1.6rem;
     font-weight: 700;
-    line-height: 19px;
+    line-height: 21px;
 }
 
 .verify-badge-icon {
@@ -72,12 +88,13 @@
 }
 
 .full-name {
+    color: rgba(22, 24, 35, 0.75);
     font-size: 1.2rem;
     line-height: 15px;
 }
 
 // show more button
-.show-more-text {
+.show-more-btn {
     padding-left: 8px;
     margin-top: 8px;
     color: var(--primary-color);
