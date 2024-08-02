@@ -7,19 +7,19 @@ import styles from "./AccountSection.module.scss";
 
 const cx = classNames.bind(styles);
 
-function AccountSection({ title, accounts }) {
+function AccountSection({ title, accountList }) {
     return (
         <div className={cx("section-container")}>
             <h2 className={cx("section-title")}>{title}</h2>
-            <AccountList />
-            <p className={cx("show-more-text")}>See more</p>
+            <AccountList accountList={accountList} />
+            <p className={cx("show-more-btn")}>See more</p>
         </div>
     );
 }
 
 AccountSection.propTypes = {
-    title: PropTypes.string,
-    accounts: PropTypes.arrayOf(PropTypes.object),
+    title: PropTypes.string.isRequired,
+    accountList: PropTypes.object.isRequired,
 };
 
 export default memo(AccountSection);
