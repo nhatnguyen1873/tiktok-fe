@@ -1,9 +1,10 @@
-import { memo } from "react";
+import { memo, useMemo } from "react";
 import PropTypes from "prop-types";
 import classNames from "classnames/bind";
 import HeadlessTippy from "@tippyjs/react/headless";
 
 import images from "@/assets/images";
+import { convertIntoAbbreviation } from "@/utils/transformNumber";
 import Image from "@/components/Image";
 import Button from "@/components/Button";
 import PopperContainer from "@/components/Popper";
@@ -21,6 +22,10 @@ function PreviewAccount({
     children,
     ...props
 }) {
+    const { followers_count, likes_count } = account;
+    const followersCount = useMemo(() => convertIntoAbbreviation(followers_count), [followers_count]);
+    const likesCount = useMemo(() => convertIntoAbbreviation(likes_count), [likes_count]);
+
     return (
         <div>
             <HeadlessTippy
@@ -54,9 +59,11 @@ function PreviewAccount({
                                     />
                                 )}
                             </h4>
-                            <p className={cx("full-name")}>{account.full_name}</p>
+                            <p className={cx("full-name")}>{account.first_name + " " + account.last_name}</p>
                             <p className={cx("sub-title")}>
-                                6.7M<span className={cx("label")}>Followers</span>429.9M
+                                {followersCount}
+                                <span className={cx("label")}>Followers</span>
+                                {likesCount}
                                 <span className={cx("label")}>Likes</span>
                             </p>
                         </PopperContainer>
@@ -71,7 +78,16 @@ function PreviewAccount({
 }
 
 PreviewAccount.propTypes = {
-    account: PropTypes.object,
+    account: PropTypes.shape({
+        first_name: PropTypes.string,
+        last_name: PropTypes.string,
+        nickname: PropTypes.string,
+        avatar: PropTypes.string,
+        tick: PropTypes.bool,
+        isLive: PropTypes.bool,
+        followers_count: PropTypes.number,
+        likes_count: PropTypes.number,
+    }),
     delay: PropTypes.arrayOf(PropTypes.number),
     hideOnClick: PropTypes.bool,
     offset: PropTypes.arrayOf(PropTypes.number),

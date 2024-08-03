@@ -24,7 +24,7 @@ const AccountItem = forwardRef(({ account }, ref) => {
                         <img src={images.verifyBadge.default} alt="Verify badge" className={cx("verify-badge-icon")} />
                     )}
                 </h4>
-                <p className={cx("full-name")}>{account.full_name}</p>
+                <p className={cx("full-name")}>{account.first_name + " " + account.last_name}</p>
             </div>
         </Link>
     );
@@ -32,7 +32,8 @@ const AccountItem = forwardRef(({ account }, ref) => {
 
 AccountItem.propTypes = {
     account: PropTypes.shape({
-        full_name: PropTypes.string,
+        first_name: PropTypes.string,
+        last_name: PropTypes.string,
         nickname: PropTypes.string,
         avatar: PropTypes.string,
         tick: PropTypes.bool,
