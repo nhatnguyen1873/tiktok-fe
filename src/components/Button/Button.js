@@ -57,7 +57,7 @@ function Button({
     }
 
     return (
-        <Component {..._props} className={classNames}>
+        <Component className={classNames} {..._props}>
             {leftIcon && <span className={cx("left-icon")}>{leftIcon}</span>}
             {children}
             {rightIcon && <span className={cx("right-icon")}>{rightIcon}</span>}

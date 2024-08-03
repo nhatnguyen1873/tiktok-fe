@@ -1,0 +1,47 @@
+// Link List
+.link-list-container {
+    margin-top: 28px;
+}
+
+// Link Group
+.link-group-container {
+    + {
+        .link-group-container {
+            margin-top: 16px;
+        }
+    }
+}
+
+.title-group {
+    color: rgba(22, 24, 35, 0.5);
+    font-family: "TikTokDisplayFont", sans-serif;
+    font-size: 1.6rem;
+    font-weight: 700;
+    line-height: 1.375;
+
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.active {
+    color: var(--text-color);
+}
+
+.links-group {
+    margin-bottom: 8px;
+}
+
+.link-label {
+    display: inline-block;
+    margin-right: 6px;
+    color: rgba(22, 24, 35, 0.5);
+    font-size: 1.2rem;
+    font-weight: 600;
+    line-height: 1.333;
+
+    &:hover {
+        cursor: pointer;
+        text-decoration: underline;
+    }
+}
