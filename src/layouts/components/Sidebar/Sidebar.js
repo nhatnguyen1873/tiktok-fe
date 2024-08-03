@@ -189,7 +189,7 @@ function Sidebar() {
                 <Menu items={MENU_ITEMS} />
                 <AccountSection title="Suggested accounts" accountList={SUGGESTED_ACCOUNTS} />
                 <AccountSection title="Following accounts" accountList={FOLLOWING_ACCOUNTS} />
-                {/* <Footer /> */}
+                <Footer />
             </div>
         </aside>
     );

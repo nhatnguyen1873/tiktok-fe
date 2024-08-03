@@ -14,6 +14,15 @@ const routes = {
     forgood: "/forgood",
     business: "/business",
     creatorNetworks: "/live/creator-networks",
+    transparency: "/transparency",
+    tiktokRewards: "/tiktok-rewards",
+    embed: "/embed",
+    safety: "/safety",
+    termsOfService: "/legal/terms-of-service",
+    privacyPolicy: "/legal/privacy-policy-row",
+    privacyCenter: "/privacy/overview",
+    creatorAcademy: "/creator-academy",
+    communityGuidelines: "/community-guidelines",
 };
 
 export default routes;
