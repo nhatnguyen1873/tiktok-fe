@@ -8,9 +8,7 @@ import styles from "./AccountSection.module.scss";
 
 const cx = classNames.bind(styles);
 
-function AccountList({ accountList }) {
-    const { type, accounts } = accountList;
-
+function AccountList({ accounts, type }) {
     return (
         <div className={cx("account-list-container")}>
             {accounts.length > 0
@@ -35,7 +33,8 @@ function AccountList({ accountList }) {
 }
 
 AccountList.propTypes = {
-    accountList: PropTypes.shape({ type: PropTypes.string, accounts: PropTypes.array }).isRequired,
+    accounts: PropTypes.array.isRequired,
+    type: PropTypes.string,
 };
 
 export default memo(AccountList);
